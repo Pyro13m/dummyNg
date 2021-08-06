@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#" style="margin-left: 10px;">Retail Management System</a>
+  <div class="locationBar" style="margin-left: 740px;">
+    <div class="dropdown">
+      <button class="btn btn-dark dropdown-toggle"  type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Location
+        </button>
+          <ul class="dropdown-menu multi-level" style="margin: 0;" role="menu" aria-labelledby="dropdownMenu">
+            <ng-container *ngFor="let location of stateName">
+              <li class="dropdown-submenu">
+                <a (mouseenter) = "onSelect(location.name)" tabindex="-1" routerLinkActive="active" class="dropdown-item" >
+                  {{location.name}}
+                </a>
+                <hr style="margin: 0;">
+                  <ul class="dropdown-menu">
+                    <ng-container *ngFor="let locationB of location.branches">
+                      <li class="">
+                        <a tabindex="-1" (click)="getOne(locationB); navigate(locationB)" class="dropdown-item" >
+                          {{locationB.name}}
+                        </a>
+                        <hr style="margin: 0;">
+                      </li>
+                    </ng-container>
+                  </ul>
+              </li>
+            </ng-container>
+          </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Drop Down Smaple 1 -->
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+  <!-- <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <span *ngFor="let item of stateName; let indexOfelement=index;">
+            <a class="dropdown-item" href="#" (mouseenter) = "onSelect(item.name)">
+              {{item.name}} --- {{indexOfelement}}
+            </a>
+            <div class= "dropdown-submenu" style="text-align: right;">
+              <span *ngFor="let sub of item.branches">
+                <a class="dropdown-item" (click) = "getOne(sub); navigate(sub)">
+                  {{sub.name}} --- {{indexOfelement}}
+                </a>
+              </span>
+            </div>
+          </span>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Close</a>
+        </div>
+      </li>
+    </ul>
+ </div> -->

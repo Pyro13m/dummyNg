@@ -1,0 +1,64 @@
+<!-- <p style="font-weight:bolder; margin-top: 12px;">Equipment Catalog</p>
+
+  <div style="margin: 10px;">
+    <h4 class="card-title" style="text-align: center;font-weight: bolder;">Branch ID: {{ featureChose.branch_id }}</h4>
+    <hr>
+    <div class="card" style="width:300px;display: inline-flex; margin: 5px; text-align: center;" *ngFor="let category of featureChose.categories">
+      <h4 class="card-title" style="text-align: center;">Branch Name:</h4>
+        <p>{{ featureChose.name }}</p>
+      <hr>
+      <img class="card-img-top" src='{{"../../../../../assets/category/" + category.image}}' alt="Card image">
+      <div class="card-body">
+
+        <p class="card-text">{{category.name}}</p>
+        <a class="btn btn-primary" (click)="navigate(category)">See Sub-Categories</a>
+      </div>
+    </div>
+    <hr>
+    <button (click) = "getData()">GET Data</button>
+  </div> -->
+<!-- [routerLink] = "['/categories/subcategories/', category.name]" -->
+
+<p style="font-weight:bolder; margin-top: 12px; margin-left:26px ;">Subcategories Catalog</p>
+<div *ngFor="let l of data" style="margin:23px;">
+  <div *ngIf="l.name === location">
+    <div *ngFor="let branch of l.branches">
+    <div *ngIf="branch.branch_id === b_id">
+      <div *ngFor="let category of branch.categories">
+        <div *ngIf="category.name === cat">
+          <p style="text-align: center; font-weight: bold; font-size: 17px;">Category: {{category.name}}</p>
+          <!-- <div *ngFor="let sub of category.subcategories"> -->
+            <div class="card" style="width:300px;display: inline-flex; margin: 5px; text-align: center;" *ngFor="let sub of category.subcategories">
+              <div *ngIf="sub.name !=='NA'; else nonFound">
+                <h4 class="card-title" style="text-align: center;">Branch Name:</h4>
+                <p>{{ sub.name }}</p>
+                <hr>
+                <img class="card-img-top" src='{{"../../../../../assets/category/subcategory/" + sub.image}}' alt="Card image">
+                <div class="card-body">
+                  <p class="card-text">{{sub.name}}</p>
+                  <a class="btn btn-primary disabled">Check Details</a>
+                </div>
+              </div>
+              <ng-template #nonFound>
+                <h4 class="card-title" style="text-align: center;">Branch Name:</h4>
+                <p>{{ sub.name }}</p>
+                <hr>
+                <img class="card-img-top" src='../../../../../assets/category/noinfo.jpg' alt="Card image">
+                <div class="card-body">
+                  <p class="card-text">{{sub.name}}</p>
+                  <a class="btn btn-lg btn-primary disabled">Check Details</a>
+                </div>
+              </ng-template>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- <div *ngIf="dealer_id.dealer_id === b_id">
+        {{dealer_id}}
+      </div> -->
+    </div>
+  </div>
+<!-- </div> -->

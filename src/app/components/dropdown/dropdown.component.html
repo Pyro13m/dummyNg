@@ -1,0 +1,18 @@
+<a *ngFor="let mi of stateName;let i = index">
+    <span class="dropdown-menu-container">
+      <span class="dropdown-menu-item">{{ mi.name }}</span>
+    </span>
+    <div class="submenu-container">
+      <span *ngFor="let sub of mi.branches;let j = index" class="submenu-item"> {{ sub.name }}</span>
+    </div>
+  </a>
+
+<!-- <a *ngFor="let mi of stateName;let i = index">
+  <span class="dropdown-menu-container">
+    <span class="dropdown-menu-item">{{ mi.name }}</span>
+  </span>
+  <div class="submenu-container">
+    <span *ngFor="let sub of mi.branches;let j = index" class="submenu-item"> {{ sub.name }}</span>
+  </div>
+</a> -->
+<!-- (click)="onClick($event, i, j)" -->
