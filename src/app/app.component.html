@@ -5,9 +5,11 @@
 <div *ngIf="!isClicked">
   <app-home></app-home>
 </div>
+<!-- HERE!
+{{check}} -->
 
 <div *ngIf="isClicked">
-  <app-categories [featureChose] = "branch"  [locationChose] = "location"></app-categories>
+  <app-categories [featureChose] = "branch"  [locationChose] = "location" ></app-categories>
 </div>
 
 <router-outlet></router-outlet>

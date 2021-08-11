@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 // export interface branch {
 //   branch_id: string,
@@ -22,7 +22,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 
 
-export class AppComponent  {
+export class AppComponent implements OnInit {
   title = 'dummy';
   // public onClick(event: MouseEvent) {
   //   //prevent event bubbling up to parent
@@ -32,13 +32,26 @@ export class AppComponent  {
   loadedFeature: any;
   isClicked = false;
 
+  check = false;
+
+
+  // @Input() checkDD = false;
   @Output() branch = new EventEmitter<any>();
   @Output() location = new EventEmitter<string>();
+  // @Output() dropdownCheck = new EventEmitter<string>();
 
+  // ddClick(data: any){
+  //   console.log("Click Data: ", data);
+  //   this.check = data;
+  // }
+
+  ngOnInit(){
+  }
 
   onNavigate(feature: string){
     this.loadedFeature = feature;
     this.location = this.loadedFeature;
+    // this.dropdownCheck = this.loadedFeature;
     console.log("location: ", this.location);
   }
 
@@ -49,7 +62,7 @@ export class AppComponent  {
     console.log("branch: ", this.branch);
   }
 
-  sendLocation(data: any){
-    this
-  }
+  // sendLocation(data: any){
+  //   this
+  // }
 }

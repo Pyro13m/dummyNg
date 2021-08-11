@@ -1,7 +1,10 @@
+import { SubCat } from './../../../assets/sub-cat.model';
 // import { branch } from './../../app.component';
 import { DataService } from './../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-subcategories',
@@ -16,8 +19,14 @@ export class SubcategoriesComponent implements OnInit {
   cat !: string;
   modifiedData : any;
   len : any;
+  branch !: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private dataService: DataService,
+    private store: Store<{ subList: { branch: SubCat[] } }>
+    ) {
     this.route.queryParams
       .subscribe(params => {
         console.log(params); // { name: "name" , ... }
@@ -28,14 +37,15 @@ export class SubcategoriesComponent implements OnInit {
         this.cat = params.category;
 
       }
-    );
-
-    for(let i=0;i<this.len;i++){
-
-    }
+    )
   }
 
   ngOnInit(): void {
+    this.store.select('subList').subscribe(res =>{
+      this.branch = res;
+      console.log("!!!!Branch: ", this.branch.sub);
+    });
+    //console.log("Sub Categories!: ", this.branch)
     this.showAll();
     this.modifyData();
   }

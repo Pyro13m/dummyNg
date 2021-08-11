@@ -10,8 +10,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { HomeComponent } from './components/home/home.component';
 import { SubcategoriesComponent } from './components/subcategories/subcategories.component';
 
-// import { StoreModule } from '@ngrx/store';
-// import { BranchReducer } from './reducer/retail.reducer'
+import { StoreModule } from '@ngrx/store';
+import { SubCategoriesReducer } from './components/subcategories/store/sub-categories.reducer';
 
 
 @NgModule({
@@ -21,16 +21,15 @@ import { SubcategoriesComponent } from './components/subcategories/subcategories
     DropdownComponent,
     CategoriesComponent,
     HomeComponent,
-    SubcategoriesComponent,
-
+    SubcategoriesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // StoreModule.forRoot({
-    //     branchProperty: BranchReducer
-    // })
+    StoreModule.forRoot({
+      subList: SubCategoriesReducer
+    })
 
   ],
   providers: [],
