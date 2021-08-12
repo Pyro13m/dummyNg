@@ -1,6 +1,9 @@
+
+import { SubCat } from './../../../assets/sub-cat.model';
 import { DataService } from './../../services/data.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -10,15 +13,25 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   stateName: any;
-
+  branch !: any;
+  checkDrop = true; //to hide the dropdown when in sub categories
+  @Input() isClicked = true;
   @Output() branchSelected = new EventEmitter<string>();
   @Output() featureSelected = new EventEmitter<string>();
 
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router, private store: Store<{ subList: { branch: SubCat[] } }>) { }
 
   ngOnInit(): void {
     this.showAll();
+    //checking any updates in the store(occurs when someone access the sub-categories) and update the checkdrop
+    this.store.select('subList').subscribe(res =>{
+      this.branch = res;
+      if(this.branch.sub){
+        this.checkDrop = !this.checkDrop;
+      }
+      console.log("!!!!Branch: ", this.branch.sub);
+    });
   }
   showAll(){
     this.dataService.getAll()

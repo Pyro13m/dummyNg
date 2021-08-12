@@ -23,7 +23,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 
 export class AppComponent implements OnInit {
-  title = 'dummy';
+  // title = 'dummy';
   // public onClick(event: MouseEvent) {
   //   //prevent event bubbling up to parent
   //   event.stopPropagation();

@@ -16,7 +16,7 @@ export class CategoriesComponent implements OnInit {
   @Input() featureChose : any;
   @Input() locationChose: any;
   subList: any;
-  // @Output() ddClick = new EventEmitter<any>();   //To hide the dropdown when in Sub-Categories
+  @Output() ddClick = new EventEmitter<any>();   //To hide the dropdown when in Sub-Categories
 
   click = true;
   constructor(private router: Router, private store: Store<{ branch: SubCat[] } >) {
@@ -26,6 +26,7 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Debugging
   getData(){
     console.log("FEATURE:", this.featureChose);
     console.log("Location: ", this.locationChose);
@@ -41,6 +42,7 @@ export class CategoriesComponent implements OnInit {
   navigate(data: any){
     // this.ddClick.emit("true");
     this.click = !this.click
+    console.log("CLICK EVENT:", this.click)
     this.subList = data.subcategories;
     this.store.dispatch(new SubListActions.GetSub(this.subList));
     console.log("HERE:" , this.subList);

@@ -63,29 +63,31 @@
       </div>
     </div>
   </div> -->
-  <div>
+  <div style="margin-left: 26px; margin-right: 26px;">
     <h4 style="text-align: center; margin-top: 15px;">Location: {{location}}</h4>
     <h6 style="text-align: center;">Branch ID: {{b_id}}</h6>
     <hr>
     <div class="card" style="width:300px;display: inline-flex; margin: 5px; text-align: center;" *ngFor="let sub of branch.sub[0]">
       <div *ngIf="sub.name !=='NA'; else nonFound">
-        <h4 class="card-title" style="text-align: center;">Equipment Name:</h4>
+        <h4 class="card-title" style="text-align: center; margin-top: 3px;">Equipment Name:</h4>
         <p>{{ sub.name }}</p>
         <hr>
         <img class="card-img-top" src='{{"../../../../../assets/category/subcategory/" + sub.image}}' alt="Card image">
         <div class="card-body">
           <p class="card-text">{{sub.name}}</p>
+          <hr>
           <a class="btn btn-primary disabled">Check Details</a>
         </div>
       </div>
       <ng-template #nonFound>
-        <h4 class="card-title" style="text-align: center;">Branch Name:</h4>
-        <p>{{ sub.name }}</p>
+        <h4 class="card-title" style="text-align: center; margin-top: 3px;">Equipment Name:</h4>
+        <p style="margin-bottom: 0;">Data {{ sub.name }}. Coming Soon!</p>
         <hr>
         <img class="card-img-top" src='../../../../../assets/category/noinfo.jpg' alt="Card image">
         <div class="card-body">
           <p class="card-text">{{sub.name}}</p>
-          <a class="btn btn-lg btn-primary disabled">Check Details</a>
+          <hr>
+          <a class="btn btn-primary disabled moreDet">Coming Soon!</a>
         </div>
       </ng-template>
     </div>

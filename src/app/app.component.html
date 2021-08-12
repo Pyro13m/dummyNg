@@ -1,6 +1,6 @@
 <base href="/">
 
-<app-header (featureSelected) = "onNavigate($event)" (branchSelected) = "sendBranch($event)"></app-header>
+<app-header (featureSelected) = "onNavigate($event)" (branchSelected) = "sendBranch($event)" (isClicked) = "isClicked"></app-header>
 
 <div *ngIf="!isClicked">
   <app-home></app-home>

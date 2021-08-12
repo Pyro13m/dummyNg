@@ -5,13 +5,14 @@
     <h4 class="card-title" style="text-align: center;font-weight: bolder;">Branch ID: {{ featureChose.branch_id }}</h4>
     <hr>
     <div class="card" style="width:300px;display: inline-flex; margin: 5px; text-align: center;" *ngFor="let category of featureChose.categories">
-      <h4 class="card-title" style="text-align: center;">Branch Name:</h4>
+      <h4 class="card-title" style="text-align: center; margin-top: 3px;">Branch Name:</h4>
         <p>{{ featureChose.name }}</p>
       <hr>
       <img class="card-img-top" src='{{"../../../../../assets/category/" + category.image}}' alt="Card image">
       <div class="card-body">
 
         <p class="card-text">{{category.name}}</p>
+        <hr>
         <a class="btn btn-secondary" (click)="navigate(category)" style="color:#fff">See Sub-Categories</a>
       </div>
     </div>

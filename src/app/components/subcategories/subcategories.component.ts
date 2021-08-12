@@ -17,7 +17,7 @@ export class SubcategoriesComponent implements OnInit {
   location !: string;
   b_id !: string;
   cat !: string;
-  modifiedData : any;
+  // modifiedData : any;
   len : any;
   branch !: any;
 
@@ -27,6 +27,8 @@ export class SubcategoriesComponent implements OnInit {
     private dataService: DataService,
     private store: Store<{ subList: { branch: SubCat[] } }>
     ) {
+
+
     this.route.queryParams
       .subscribe(params => {
         console.log(params); // { name: "name" , ... }
@@ -46,8 +48,8 @@ export class SubcategoriesComponent implements OnInit {
       console.log("!!!!Branch: ", this.branch.sub);
     });
     //console.log("Sub Categories!: ", this.branch)
-    this.showAll();
-    this.modifyData();
+    // this.showAll();
+    // this.modifyData();
   }
 
   showAll(){
@@ -62,13 +64,14 @@ export class SubcategoriesComponent implements OnInit {
     )
   }
 
-  modifyData(){
-    console.log("Location: ", this.location);
-    console.log("b_id: ", this.b_id);
-    console.log("cat: ", this.cat);
-    console.log("len", this.len)
-    console.log("DATA: ", this.data)
-  }
+    // Debugging
+  // modifyData(){
+  //   console.log("Location: ", this.location);
+  //   console.log("b_id: ", this.b_id);
+  //   console.log("cat: ", this.cat);
+  //   console.log("len", this.len)
+  //   console.log("DATA: ", this.data)
+  // }
 }
 
 // for(var i=0;i<8;i++){ //1
